@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}My shop{% endblock %}</title>
+    <link href="../static/css/base.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="header">
+      <a href="/" class="logo"><img class="logo-img" src="../../static/img/2927359.jpg" alt="Logo" /></a>
+    </div>
+    <div id="subheader">
+      <div class="cart">
+        {% with total_items=cart|length %}
+        {% if cart|length > 0 %}
+        Корзина:
+        <a href="{% url "cart:cart_detail" %}">
+        {{ total_items }} item{{ total_items|pluralize }},
+        {{ cart.get_total_price }} Рублей
+        </a>
+        {% else %}
+        Корзина пуста
+        {% endif %}
+        {% endwith %}
+       </div>
+    </div>
+    <div id="content">{% block content %} {% endblock %}</div>
+    <div class="footer-d-menu">
+      <div class="footer-d-menu__left">
+        <div class="footer-d-menu__item">
+          <a href="#" class="footer-d-menu__link smartLink"><!----> Журнал «Что читать» </a>
+        </div>
+        <div class="footer-d-menu__item">
+          <a href="#" class="footer-d-menu__link smartLink"><!----> Подарочные сертификаты </a>
+        </div>
+        <div class="footer-d-menu__item"><a href="#" class="footer-d-menu__link smartLink"><!----> Часто задаваемые вопросы </a>
+        </div>
+        <div class="footer-d-menu__item"><a href="#" class="footer-d-menu__link smartLink"><!----> Доставка </a>
+        </div>
+        <div class="footer-d-menu__item"><a href="#" class="footer-d-menu__link smartLink"><!----> Оплата </a>
+        </div>
+      </div>
+      <div class="footer-d-menu__center"><div class="footer-d-menu__center-inner">
+        <div class="footer-d-menu__item">
+          <a href="#" class="footer-d-menu__link smartLink"><!----> Условия и положения </a>
+        </div>
+        <div class="footer-d-menu__item"><a href="#" class="footer-d-menu__link smartLink"><!----> Партнёрская программа </a>
+        </div><div class="footer-d-menu__item"><a href="#" class="footer-d-menu__link smartLink"><!----> Программа лояльности </a>
+        </div>
+        <div class="footer-d-menu__item">
+          <a href="#" class="footer-d-menu__link smartLink"><!----> Оптовым клиентам </a>
+        </div>
+        <div class="footer-d-menu__item"><a href="#" class="footer-d-menu__link smartLink"><!----> Карта сайта </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-d-menu__right">
+      <div class="footer-d-menu__right-inner">
+        <div class="footer-d-menu__item">
+          <a href="#" class="footer-d-menu__link smartLink"><!----> Контактная информация </a>
+        </div>
+        <div class="footer-d-menu__item"><a href="tel:8 (800) 333-65-23" class="footer-d-menu__link">8 (495) 777-77-77</a>
+        </div>
+        <div class="footer-d-menu__item"><a href="mailto:imarket@book24.ru" class="footer-d-menu__link">cool_pochta@mail.ru</a>
+        </div><!---->
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
